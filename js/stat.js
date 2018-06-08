@@ -28,7 +28,7 @@ var getMaxElement = function (array) {
 
   return maxElement;
 };
-var getRandomNumber = function (min, max) {
+var getRandomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 var renderStatistics = function (ctx, names, times) {
@@ -46,7 +46,7 @@ var renderStatistics = function (ctx, names, times) {
   for (var i = 0; i < names.length; i++) {
     var currentBarHeight = ((BAR_HEIGHT * Math.floor(times[i])) / maxTime) - TITLE_GAP_Y;
     var currentBalanceOfTotalBarHeight = BAR_HEIGHT - currentBarHeight;
-    var currentColor = names[i] === 'Вы' ? 'rgba(255, 0, 0, 1)' : 'hsl(240, ' + getRandomNumber(1, 101) + '%, 50%)';
+    var currentColor = names[i] === 'Вы' ? 'rgba(255, 0, 0, 1)' : 'hsl(240, ' + getRandomInteger(1, 101) + '%, 50%)';
     var coordinateX = CLOUD_X + BAR_WIDTH + (BAR_WIDTH + BAR_GAP_X) * i;
     var pointsCoordinateY = CLOUD_Y + POINTS_GAP_Y + currentBalanceOfTotalBarHeight;
     var barCoordinateY = CLOUD_Y + BAR_GAP_Y + currentBalanceOfTotalBarHeight;
