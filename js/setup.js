@@ -1,6 +1,6 @@
 'use strict';
 
-var NAMES_WIZARDS = [
+var NAMES_OF_WIZARDS = [
   'Иван',
   'Хуан Себастьян',
   'Мария',
@@ -10,7 +10,7 @@ var NAMES_WIZARDS = [
   'Люпита',
   'Вашингтон'
 ];
-var SURNAMES_WIZARDS = [
+var SURNAMES_OF_WIZARDS = [
   'да Марья',
   'Верон',
   'Мирабелла',
@@ -45,7 +45,7 @@ var generateWizards = function (numberOfWizards) {
 
   for (var i = 0; i < numberOfWizards; i++) {
     wizards[i] = {
-      name: NAMES_WIZARDS[getRandomIntegerFromInterval(0, NAMES_WIZARDS.length)] + ' ' + SURNAMES_WIZARDS[getRandomIntegerFromInterval(0, SURNAMES_WIZARDS.length)],
+      name: NAMES_OF_WIZARDS[getRandomIntegerFromInterval(0, NAMES_OF_WIZARDS.length)] + ' ' + SURNAMES_OF_WIZARDS[getRandomIntegerFromInterval(0, SURNAMES_OF_WIZARDS.length)],
       coatColor: COAT_COLORS[getRandomIntegerFromInterval(0, COAT_COLORS.length)],
       eyesColor: EYES_COLORS[getRandomIntegerFromInterval(0, EYES_COLORS.length)]
     };

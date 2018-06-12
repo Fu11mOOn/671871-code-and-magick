@@ -31,7 +31,8 @@ var getMaxElement = function (array) {
 var getRandomIntegerFromInterval = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
-var renderStatistics = function (ctx, names, times) {
+
+window.renderStatistics = function (ctx, names, times) {
   var maxTime = Math.floor(getMaxElement(times));
 
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
@@ -59,5 +60,3 @@ var renderStatistics = function (ctx, names, times) {
     ctx.fillRect(coordinateX, barCoordinateY, BAR_WIDTH, currentBarHeight);
   }
 };
-
-renderStatistics();
