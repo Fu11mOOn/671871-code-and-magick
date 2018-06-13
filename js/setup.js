@@ -89,7 +89,6 @@ var onSetupEscPress = function (evt) {
 var onSetupOpen = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', onSetupEscPress);
-  setupCloseButton.addEventListener('keydown', onSetupEscPress);
 };
 var onSetupClose = function () {
   setup.classList.add('hidden');
