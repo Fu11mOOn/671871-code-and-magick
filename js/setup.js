@@ -48,6 +48,18 @@ var ENTER_KEYCODE = 13;
 var FILL_PROPERTY = 'fill';
 var BACKGROUND_COLOR_PROPERTY = 'backgroundColor';
 
+var setup = document.querySelector('.setup');
+var setupSimilarWizard = document.querySelector('.setup-similar');
+var setupOpenButton = document.querySelector('.setup-open');
+var setupCloseButton = document.querySelector('.setup-close');
+var userNameInput = document.querySelector('.setup-user-name');
+var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
+var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
+var wizardFireball = document.querySelector('.setup-fireball-wrap');
+var inputOfWizardCoat = document.querySelector('input[name="coat-color"]');
+var inputOfWizardEyes = document.querySelector('input[name="eyes-color"]');
+var inputOfWizardFireball = document.querySelector('input[name="fireball-color"]');
+
 var getRandomIntegerFromInterval = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
@@ -73,7 +85,8 @@ var generateWizards = function (numberOfWizards) {
 
   return wizards;
 };
-var pasteWizards = function (array) {
+var pasteWizards = function () {
+  var mockOfWizards = generateWizards(NUMBER_OF_WIZARDS);
   var elementsList = document.querySelector('.setup-similar-list');
   var fragment = document.createDocumentFragment();
 
@@ -87,8 +100,8 @@ var pasteWizards = function (array) {
     return wizardTemplate;
   };
 
-  for (var i = 0; i < array.length; i++) {
-    fragment.appendChild(renderWizard(array[i]));
+  for (var i = 0; i < mockOfWizards.length; i++) {
+    fragment.appendChild(renderWizard(mockOfWizards[i]));
   }
 
   elementsList.appendChild(fragment);
@@ -133,11 +146,11 @@ var onSetupClose = function () {
   wizardEyes.removeEventListener('click', onWizardEyesChangeColor);
   wizardFireball.removeEventListener('click', onWizardFireballChangeColor);
 };
-var changeParameterColorWhenPressed = function (parameter, colors, property, input) {
+var changeParameterColorWhenPressed = function (element, colors, property, input) {
   var pastColor = input.value;
   var newColor = getNextElement(colors, pastColor);
 
-  parameter.style[property] = newColor;
+  element.style[property] = newColor;
   input.value = newColor;
 };
 var onWizardCoatChangeColor = function () {
@@ -150,20 +163,7 @@ var onWizardFireballChangeColor = function () {
   changeParameterColorWhenPressed(wizardFireball, FIREBALL_COLORS, BACKGROUND_COLOR_PROPERTY, inputOfWizardFireball);
 };
 
-var mockOfWizards = generateWizards(NUMBER_OF_WIZARDS);
-var setup = document.querySelector('.setup');
-var setupSimilarWizard = document.querySelector('.setup-similar');
-var setupOpenButton = document.querySelector('.setup-open');
-var setupCloseButton = document.querySelector('.setup-close');
-var userNameInput = document.querySelector('.setup-user-name');
-var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
-var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
-var wizardFireball = document.querySelector('.setup-fireball-wrap');
-var inputOfWizardCoat = document.querySelector('input[name="coat-color"]');
-var inputOfWizardEyes = document.querySelector('input[name="eyes-color"]');
-var inputOfWizardFireball = document.querySelector('input[name="fireball-color"]');
-
-pasteWizards(mockOfWizards);
+pasteWizards();
 setupOpenButton.addEventListener('click', onSetupOpen);
 setupOpenButton.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
