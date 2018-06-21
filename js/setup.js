@@ -133,6 +133,7 @@ var onSetupOpen = function () {
   wizardCoat.addEventListener('click', onWizardCoatChangeColor);
   wizardEyes.addEventListener('click', onWizardEyesChangeColor);
   wizardFireball.addEventListener('click', onWizardFireballChangeColor);
+  window.dialog.open();
 };
 var onSetupClose = function () {
   setup.classList.add('hidden');
@@ -145,6 +146,7 @@ var onSetupClose = function () {
   wizardCoat.removeEventListener('click', onWizardCoatChangeColor);
   wizardEyes.removeEventListener('click', onWizardEyesChangeColor);
   wizardFireball.removeEventListener('click', onWizardFireballChangeColor);
+  window.dialog.close();
 };
 var changeParameterColorWhenPressed = function (element, colors, property, input) {
   var pastColor = input.value;

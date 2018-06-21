@@ -2,7 +2,7 @@
 
 (function () {
   var setup = document.querySelector('.setup');
-  var userPicture = document.querySelector('.setup-user-pic');
+  var userPicture = document.querySelector('.upload');
 
   var onUserPictureMouseDown = function (evt) {
     var dragged = false;
@@ -44,6 +44,17 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   };
+  var openDialog = function () {
+    userPicture.addEventListener('mousedown', onUserPictureMouseDown);
+  };
+  var closeDialog = function () {
+    userPicture.removeEventListener('mousedown', onUserPictureMouseDown);
+    setup.style.left = '';
+    setup.style.top = '';
+  };
 
-  userPicture.addEventListener('mousedown', onUserPictureMouseDown);
+  window.dialog = {
+    open: openDialog,
+    close: closeDialog
+  };
 })();
