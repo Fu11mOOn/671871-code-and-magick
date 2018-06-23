@@ -2,6 +2,10 @@
 
 (function () {
   var setup = document.querySelector('.setup');
+  var setupSimilarWizard = document.querySelector('.setup-similar');
+  var setupOpenButton = document.querySelector('.setup-open');
+  var setupCloseButton = document.querySelector('.setup-close');
+  var userNameInput = document.querySelector('.setup-user-name');
   var userPicture = document.querySelector('.upload');
 
   var onUserPictureMouseDown = function (evt) {
@@ -44,17 +48,45 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   };
-  var openDialog = function () {
+  var onSetupEscPressed = function (evt) {
+    window.keyPressed.esc(evt, onSetupClose);
+  };
+  var onCloseButtonEnterPressed = function (evt) {
+    window.keyPressed.enter(evt, onSetupClose);
+  };
+  var onInputFocus = function () {
+    document.removeEventListener('keydown', onSetupEscPressed);
+  };
+  var onInputBlur = function () {
+    document.addEventListener('keydown', onSetupEscPressed);
+  };
+  var onSetupOpen = function () {
+    setup.classList.remove('hidden');
+    setupSimilarWizard.classList.remove('hidden');
+    document.addEventListener('keydown', onSetupEscPressed);
+    userNameInput.addEventListener('focus', onInputFocus);
+    userNameInput.addEventListener('blur', onInputBlur);
+    setupCloseButton.addEventListener('click', onSetupClose);
+    setupCloseButton.addEventListener('keydown', onCloseButtonEnterPressed);
+    window.coloring.add();
     userPicture.addEventListener('mousedown', onUserPictureMouseDown);
   };
-  var closeDialog = function () {
+  var onSetupClose = function () {
+    setup.classList.add('hidden');
+    setupSimilarWizard.classList.add('hidden');
+    document.removeEventListener('keydown', onSetupEscPressed);
+    userNameInput.removeEventListener('focus', onInputFocus);
+    userNameInput.removeEventListener('blur', onInputBlur);
+    setupCloseButton.removeEventListener('click', onSetupClose);
+    setupCloseButton.removeEventListener('keydown', onCloseButtonEnterPressed);
+    window.coloring.remove();
     userPicture.removeEventListener('mousedown', onUserPictureMouseDown);
     setup.style.left = '';
     setup.style.top = '';
   };
 
-  window.dialog = {
-    open: openDialog,
-    close: closeDialog
-  };
+  setupOpenButton.addEventListener('click', onSetupOpen);
+  setupOpenButton.addEventListener('keydown', function (evt) {
+    window.keyPressed.enter(evt, onSetupOpen);
+  });
 })();
