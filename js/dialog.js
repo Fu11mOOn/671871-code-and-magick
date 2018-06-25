@@ -49,10 +49,10 @@
     document.addEventListener('mouseup', onMouseUp);
   };
   var onSetupEscPressed = function (evt) {
-    window.keyPressed.esc(evt, onSetupClose);
+    window.utilits.escPressed(evt, onSetupClose);
   };
   var onCloseButtonEnterPressed = function (evt) {
-    window.keyPressed.enter(evt, onSetupClose);
+    window.utilits.enterPressed(evt, onSetupClose);
   };
   var onInputFocus = function () {
     document.removeEventListener('keydown', onSetupEscPressed);
@@ -87,6 +87,6 @@
 
   setupOpenButton.addEventListener('click', onSetupOpen);
   setupOpenButton.addEventListener('keydown', function (evt) {
-    window.keyPressed.enter(evt, onSetupOpen);
+    window.utilits.enterPressed(evt, onSetupOpen);
   });
 })();

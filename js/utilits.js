@@ -1,6 +1,9 @@
 'use strict';
 
 (function () {
+  var ESC_KEYCODE = 27;
+  var ENTER_KEYCODE = 13;
+
   window.utilits = {
     getRandomIntegerFromInterval: function (min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
@@ -13,6 +16,16 @@
       }
 
       return currentElement;
+    },
+    escPressed: function (evt, action) {
+      if (evt.keyCode === ESC_KEYCODE) {
+        action();
+      }
+    },
+    enterPressed: function (evt, action) {
+      if (evt.keyCode === ENTER_KEYCODE) {
+        action();
+      }
     }
   };
 })();
