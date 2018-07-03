@@ -24,7 +24,14 @@
 
     elementsList.appendChild(fragment);
   };
+  var onLoad = function (array) {
+    pasteWizards(array);
+    window.utilits.removeErrorText(setupSimilarWizard);
+  };
+  var onError = function (errorText) {
+    window.utilits.addErrorText(errorText, setupSimilarWizard);
+  };
 
   setupSimilarWizard.classList.remove('hidden');
-  window.backend.load(pasteWizards, setupSimilarWizard);
+  window.backend.load(onLoad, onError);
 })();

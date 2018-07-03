@@ -63,9 +63,13 @@
   };
   var onLoad = function () {
     onSetupClose();
+    window.utilits.removeErrorText(setupFooter);
+  };
+  var onError = function (errorText) {
+    window.utilits.addErrorText(errorText, setupFooter);
   };
   var onFormSubmit = function (evt) {
-    window.backend.save(new FormData(form), onLoad, setupFooter);
+    window.backend.save(new FormData(form), onLoad, onError);
     evt.preventDefault();
   };
   var onSetupOpen = function () {
