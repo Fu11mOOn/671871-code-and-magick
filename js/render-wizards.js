@@ -1,10 +1,7 @@
 'use strict';
 
 (function () {
-  var setupSimilarWizard = document.querySelector('.setup-similar');
-  var NUMBER_OF_WIZARDS = 4;
-
-  var pasteWizards = function (array) {
+  window.renderWizards = function (array, number) {
     var elementsList = document.querySelector('.setup-similar-list');
     var fragment = document.createDocumentFragment();
 
@@ -18,20 +15,10 @@
       return wizardTemplate;
     };
 
-    for (var i = 0; i < NUMBER_OF_WIZARDS; i++) {
+    for (var i = 0; i < number; i++) {
       fragment.appendChild(renderWizard(array[window.utilits.getRandomIntegerFromInterval(0, array.length)]));
     }
 
     elementsList.appendChild(fragment);
   };
-  var onLoad = function (array) {
-    pasteWizards(array);
-    window.utilits.removeErrorText(setupSimilarWizard);
-  };
-  var onError = function (errorText) {
-    window.utilits.addErrorText(errorText, setupSimilarWizard);
-  };
-
-  setupSimilarWizard.classList.remove('hidden');
-  window.backend.load(onLoad, onError);
 })();

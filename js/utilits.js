@@ -3,8 +3,10 @@
 (function () {
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
+  var DEBOUNCE_INTERVAL = 500;
 
   var errorClass = 'error-message';
+  var lastTimeout;
 
   window.utilits = {
     getRandomIntegerFromInterval: function (min, max) {
@@ -46,6 +48,18 @@
       if (lastElement.classList.contains(errorClass)) {
         lastElement.remove();
       }
+    },
+    removeAllChildElement: function (element) {
+      while (element.firstChild) {
+        element.removeChild(element.firstChild);
+      }
+    },
+    eliminateBounce: function (fun) {
+      if (lastTimeout) {
+        window.clearTimeout(lastTimeout);
+      }
+
+      lastTimeout = window.setTimeout(fun, DEBOUNCE_INTERVAL);
     }
   };
 })();
