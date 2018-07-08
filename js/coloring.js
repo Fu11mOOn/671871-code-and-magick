@@ -33,6 +33,7 @@
   var inputOfWizardCoat = document.querySelector('input[name="coat-color"]');
   var inputOfWizardEyes = document.querySelector('input[name="eyes-color"]');
   var inputOfWizardFireball = document.querySelector('input[name="fireball-color"]');
+  var colorsOfWizard = {};
 
   var changeParameterColorWhenPressed = function (element, colors, property, input) {
     var pastColor = input.value;
@@ -43,9 +44,13 @@
   };
   var onWizardCoatChangeColor = function () {
     changeParameterColorWhenPressed(wizardCoat, COAT_COLORS, FILL_PROPERTY, inputOfWizardCoat);
+    colorsOfWizard.coatColor = inputOfWizardCoat.value;
+    window.similarWizards(colorsOfWizard);
   };
   var onWizardEyesChangeColor = function () {
     changeParameterColorWhenPressed(wizardEyes, EYES_COLORS, FILL_PROPERTY, inputOfWizardEyes);
+    colorsOfWizard.eyesColor = inputOfWizardEyes.value;
+    window.similarWizards(colorsOfWizard);
   };
   var onWizardFireballChangeColor = function () {
     changeParameterColorWhenPressed(wizardFireball, FIREBALL_COLORS, BACKGROUND_COLOR_PROPERTY, inputOfWizardFireball);
