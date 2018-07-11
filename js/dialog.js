@@ -80,6 +80,7 @@
     setupCloseButton.addEventListener('click', onSetupClose);
     setupCloseButton.addEventListener('keydown', onCloseButtonEnterPressed);
     window.coloring.add();
+    window.avatar.add();
     userPicture.addEventListener('mousedown', onUserPictureMouseDown);
     form.addEventListener('submit', onFormSubmit);
   };
@@ -91,6 +92,7 @@
     setupCloseButton.removeEventListener('click', onSetupClose);
     setupCloseButton.removeEventListener('keydown', onCloseButtonEnterPressed);
     window.coloring.remove();
+    window.avatar.remove();
     userPicture.removeEventListener('mousedown', onUserPictureMouseDown);
     setup.style.left = '';
     setup.style.top = '';
